@@ -1,7 +1,9 @@
 ﻿
-namespace Controllers; 
+namespace Controllers;
+/// <summary>Edm Model Builder class</summary>
 public static class ODataEdmModel
 {
+    /// <summary>Edm Model Builder function</summary>
     public static Microsoft.OData.Edm.IEdmModel GetEdmModel()
     {
         var builder = new Microsoft.OData.ModelBuilder.ODataConventionModelBuilder();

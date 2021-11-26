@@ -14,5 +14,11 @@
             Get All Demo Products
             </summary>
         </member>
+        <member name="T:Controllers.ODataEdmModel">
+            <summary>Edm Model Builder class</summary>
+        </member>
+        <member name="M:Controllers.ODataEdmModel.GetEdmModel">
+            <summary>Edm Model Builder function</summary>
+        </member>
     </members>
 </doc>
