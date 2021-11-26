@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Models</name>
+    </assembly>
+    <members>
+        <member name="T:Models.DemoInventoryStock">
+            <summary>Stock data</summary>
+        </member>
+        <member name="P:Models.DemoInventoryStock.Id">
+            <summary> Id </summary>
+        </member>
+        <member name="P:Models.DemoInventoryStock.ProductId">
+            <summary> Product Id </summary>
+        </member>
+        <member name="P:Models.DemoInventoryStock.StoreId">
+            <summary> Store Id </summary>
+        </member>
+        <member name="P:Models.DemoInventoryStock.Quantity">
+            <summary> Stock Quantity </summary>
+        </member>
+        <member name="T:Models.DemoProduct">
+            <summary> Product </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Id">
+            <summary> Id </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Name">
+            <summary> Name </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Active">
+            <summary> Active </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Price">
+            <summary> Price </summary>
+        </member>
+        <member name="P:Models.DemoProduct.ReleaseDate">
+            <summary> Release Date </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Rating">
+            <summary> Rating </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Type">
+            <summary> Product Type </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Ext">
+            <summary> Extra information in separate table (rarely used) </summary>
+        </member>
+        <member name="P:Models.DemoProduct.Stocks">
+            <summary> Stocks information of Product  </summary>
+        </member>
+        <member name="T:Models.DemoProductExt">
+            <summary> Extra information in separate table (rarely used) </summary>
+        </member>
+        <member name="P:Models.DemoProductExt.ProductId">
+            <summary> Id. Equals to Product.Id </summary>
+        </member>
+        <member name="P:Models.DemoProductExt.Description">
+            <summary> Description </summary>
+        </member>
+        <member name="P:Models.DemoProductExt.MinimumStock">
+            <summary> Minimum Stock </summary>
+        </member>
+        <member name="T:Models.DemoProductType">
+            <summary> 
+            Product Type 
+            Product = 0,
+            Service = 1,
+            Information = 2,
+            </summary>
+        </member>
+        <member name="F:Models.DemoProductType.Product">
+            <summary>Product</summary>
+        </member>
+        <member name="F:Models.DemoProductType.Service">
+            <summary>Service</summary>
+        </member>
+        <member name="F:Models.DemoProductType.Information">
+            <summary>Information</summary>
+        </member>
+    </members>
+</doc>

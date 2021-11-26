@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Controllers</name>
+    </assembly>
+    <members>
+        <member name="T:Controllers.DemoProductController">
+            <summary>
+            Demo Product Controller
+            </summary>
+        </member>
+        <member name="M:Controllers.DemoProductController.Get">
+            <summary>
+            Get All Demo Products
+            </summary>
+        </member>
+    </members>
+</doc>
