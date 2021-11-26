@@ -12,7 +12,8 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
     {
-        x.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Controllers.xml"), includeControllerXmlComments: true);
+        if (File.Exists(Path.Combine(AppContext.BaseDirectory, "Controllers.xml")))
+            x.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Controllers.xml"), includeControllerXmlComments: true);
         x.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Models.xml"), includeControllerXmlComments: true);
     });
 builder.Services.AddCors();
