@@ -28,10 +28,3 @@ public class NexxtPilotContext : DbContext
 
     }
 }
-public class ProductsContextFactory : IDesignTimeDbContextFactory<NexxtPilotContext>
-{
-    public NexxtPilotContext CreateDbContext(string[] args)
-    {
-        return new NexxtPilotContext();
-    }
-}

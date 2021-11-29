@@ -20,13 +20,4 @@ public class DemoProductController : ODataController
         res.Add(new Models.DemoProduct() { Name = "Cikk1" });
         return res;
     }
-
-    [HttpGet("ReadSettings")]
-    [EnableQuery]
-    public string ReadSettings(string settingsName)
-    {
-        var db = new Bl.NexxtPilotContext();
-        var tmp = Environment.GetEnvironmentVariable(settingsName) ?? "";
-        return "'" + tmp + "'";
-    }
 }
