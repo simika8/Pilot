@@ -33,24 +33,13 @@ public class NexxtPilotAdminController : ControllerBase
     public async Task DatabasePopulate()
     {
         using var db = new NexxtPilotContext();
-        var p1id = new Guid("00000000-0000-7250-6f64-756374343031");
-        var p = new Models.DemoProduct()
+
+        var prodcount = 100000;
+        for (int i = 1; i <= prodcount; i++)
         {
-            Id = p1id,
-            Name = "Product 1",
-            Active = true,
-            Price = 1230,
-            ReleaseDate = DateTime.Parse("2021-01-01T00:12:34.567+01:00").ToUniversalTime(),
-            Rating = 1,
-            Ext = new DemoProductExt()
-            {
-                Description = "B short description of Product 1",
-                MinimumStock = 2,
-                ProductId = p1id,
-            }
-        };
-        p.Stocks.Add(new DemoInventoryStock() { StoreId = Guid.NewGuid(), ProductId = p1id, Quantity = 3 });
-        db.Add(p);
+            var p = RandomProduct.GenerateProduct(i, prodcount);
+            db.Add(p);
+        }
 
         await db.SaveChangesAsync();
 
