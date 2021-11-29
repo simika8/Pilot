@@ -14,6 +14,21 @@
             Get All Demo Products
             </summary>
         </member>
+        <member name="T:Controllers.NexxtPilotAdminController">
+            <summary> Baseic database commands for develompent</summary>
+        </member>
+        <member name="M:Controllers.NexxtPilotAdminController.DatabaseEnsureDeleted">
+            <summary> Deletes Database</summary>
+        </member>
+        <member name="M:Controllers.NexxtPilotAdminController.DatabaseMigrate">
+            <summary> Creates and Updates Database</summary>
+        </member>
+        <member name="M:Controllers.NexxtPilotAdminController.DatabasePopulate">
+            <summary> Populates Database with some record</summary>
+        </member>
+        <member name="M:Controllers.NexxtPilotAdminController.DatabaseEnsureDeletedMigratePopulate">
+            <summary> Deletes Database</summary>
+        </member>
         <member name="T:Controllers.ODataEdmModel">
             <summary>Edm Model Builder class</summary>
         </member>
