@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Logging;
 
 namespace Bl;
 
@@ -25,6 +26,22 @@ public class NexxtPilotContext : DbContext
     {
         options
             .UseNpgsql(ConnectionString);
+        
+        // this is for table and field names be lower cased
+        // lower cased names results sqls without quotet table and field names (pgsql)
+        options
+           .UseLowerCaseNamingConvention();
+#if DEBUG
+        options
+            .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }))
+            .EnableSensitiveDataLogging()
+                .EnableDetailedErrors();
+#endif
+    }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        //This is for sub tables (refenenced only from model not from Dbcontext) be plural (eg: ProductExt -> ProductExts)
+        modelBuilder.PluralizingTableNameConvention();
     }
 }

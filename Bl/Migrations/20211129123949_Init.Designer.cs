@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bl.Migrations
 {
     [DbContext(typeof(NexxtPilotContext))]
-    [Migration("20211129113802_Init")]
+    [Migration("20211129123949_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,91 +28,114 @@ namespace Bl.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<Guid?>("DemoProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("demoproductid");
 
                     b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("productid");
 
                     b.Property<double>("Quantity")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("quantity");
 
                     b.Property<Guid>("StoreId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("storeid");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_demoinventorystocks");
 
-                    b.HasIndex("DemoProductId");
+                    b.HasIndex("DemoProductId")
+                        .HasDatabaseName("ix_demoinventorystocks_demoproductid");
 
-                    b.ToTable("DemoInventoryStock");
+                    b.ToTable("demoinventorystocks", (string)null);
                 });
 
             modelBuilder.Entity("Models.DemoProduct", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("active");
 
                     b.Property<Guid?>("ExtProductId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("extproductid");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<double?>("Price")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("price");
 
                     b.Property<int>("Rating")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("rating");
 
                     b.Property<DateTime?>("ReleaseDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("releasedate");
 
                     b.Property<int>("Type")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("type");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_demoproducts");
 
-                    b.HasIndex("ExtProductId");
+                    b.HasIndex("ExtProductId")
+                        .HasDatabaseName("ix_demoproducts_extproductid");
 
-                    b.ToTable("DemoProducts");
+                    b.ToTable("demoproducts", (string)null);
                 });
 
             modelBuilder.Entity("Models.DemoProductExt", b =>
                 {
                     b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("productid");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<double?>("MinimumStock")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("minimumstock");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("ProductId")
+                        .HasName("pk_demoproductexts");
 
-                    b.ToTable("DemoProductExt");
+                    b.ToTable("demoproductexts", (string)null);
                 });
 
             modelBuilder.Entity("Models.DemoInventoryStock", b =>
                 {
                     b.HasOne("Models.DemoProduct", null)
                         .WithMany("Stocks")
-                        .HasForeignKey("DemoProductId");
+                        .HasForeignKey("DemoProductId")
+                        .HasConstraintName("fk_demoinventorystocks_demoproducts_demoproductid");
                 });
 
             modelBuilder.Entity("Models.DemoProduct", b =>
                 {
                     b.HasOne("Models.DemoProductExt", "Ext")
                         .WithMany()
-                        .HasForeignKey("ExtProductId");
+                        .HasForeignKey("ExtProductId")
+                        .HasConstraintName("fk_demoproducts_demoproductext_exttempid");
 
                     b.Navigation("Ext");
                 });
