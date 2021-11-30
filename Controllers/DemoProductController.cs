@@ -23,7 +23,7 @@ public class DemoProductController : ODataController
     /// </summary>
     [HttpGet]
     [EnableQuery]
-    public IEnumerable<Models.DemoProduct> Get()
+    public IQueryable<Models.DemoProduct> Get()
     {
         return Db.Set<DemoProduct>().AsQueryable();
     }
