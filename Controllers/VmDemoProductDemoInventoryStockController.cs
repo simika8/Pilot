@@ -26,7 +26,7 @@ public class VmDemoProductDemoInventoryStockController : ODataController
     [EnableQuery]
     public IQueryable<Models.VmDemoProductDemoInventoryStock> Get(Guid storeId)
     {
-        var res = Db.DemoProducts
+        var query = Db.DemoProducts
             .GroupJoin(Db.DemoInventoryStocks, t => t.Id, jt => jt.ProductId, (t, jt) => new { t, jt })
             .SelectMany(
                 temp => temp.jt.DefaultIfEmpty(),
@@ -39,6 +39,6 @@ public class VmDemoProductDemoInventoryStockController : ODataController
                     }
             )
             .Where(x => x.DemoInventoryStock == null || x.DemoInventoryStock.StoreId == storeId);
-        return res;
+        return query;
     }
 }
