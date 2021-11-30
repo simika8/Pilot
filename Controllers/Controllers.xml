@@ -40,15 +40,15 @@
         </member>
         <member name="T:Controllers.VmDemoProductDemoInventoryStockController">
             <summary>
-            Demo Product Controller
+            Demo Product+Stock(Store) Controller
             </summary>
         </member>
         <member name="M:Controllers.VmDemoProductDemoInventoryStockController.#ctor(Bl.NexxtPilotContext)">
             <summary> </summary>
         </member>
-        <member name="M:Controllers.VmDemoProductDemoInventoryStockController.Get(System.Guid)">
+        <member name="M:Controllers.VmDemoProductDemoInventoryStockController.Get(System.Guid,System.String)">
             <summary>
-            Get All Demo Products
+            Get All Demo Products+Stock(Store)
             </summary>
         </member>
     </members>
