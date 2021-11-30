@@ -19,12 +19,31 @@ public class VmDemoProductDemoInventoryStockController : ODataController
         Db = db;
     }
 
+    private static IQueryable<Models.VmDemoProductDemoInventoryStock> ApplyServerSideSearch(IQueryable<Models.VmDemoProductDemoInventoryStock> query, string search)
+    {
+        var querywork = query;
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            if (double.TryParse(search, out var searchDouble))
+            {
+                querywork = querywork.Where(x => x.DemoProduct.Stocks.Any(x => x.Quantity == searchDouble)); // bármelyik raktárban a mennyiség egyezik a search-ben megadott számmal
+                //querywork = querywork.Where(x => x.DemoInventoryStock.Quantity == searchDouble); // a vizsgál raktárban a mennyiség egyezik a search-ben megadott számmal
+            }
+            else
+            {
+                querywork = querywork.Where(x => x.DemoProduct.Name.StartsWith(search));
+            }
+        }
+
+        return querywork;
+    }
+
     /// <summary>
     /// Get All Demo Products+Stock(Store)
     /// </summary>
     [HttpGet]
     [EnableQuery]
-    public IQueryable<Models.VmDemoProductDemoInventoryStock> Get(Guid storeId)
+    public IQueryable<Models.VmDemoProductDemoInventoryStock> Get(Guid storeId, string search)
     {
         var query = Db.DemoProducts
             .GroupJoin(Db.DemoInventoryStocks, t => t.Id, jt => jt.ProductId, (t, jt) => new { t, jt })
@@ -39,6 +58,9 @@ public class VmDemoProductDemoInventoryStockController : ODataController
                     }
             )
             .Where(x => x.DemoInventoryStock == null || x.DemoInventoryStock.StoreId == storeId);
+        query = ApplyServerSideSearch(query, search);
+
+
         return query;
     }
 }
