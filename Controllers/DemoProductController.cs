@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
+using Models;
 
 namespace Controllers;
 /// <summary>
@@ -24,6 +25,6 @@ public class DemoProductController : ODataController
     [EnableQuery]
     public IEnumerable<Models.DemoProduct> Get()
     {
-        return Db.DemoProducts.AsQueryable();
+        return Db.Set<DemoProduct>().AsQueryable();
     }
 }
