@@ -9,6 +9,9 @@
             Demo Product Controller
             </summary>
         </member>
+        <member name="M:Controllers.DemoProductController.#ctor(Bl.NexxtPilotContext)">
+            <summary> </summary>
+        </member>
         <member name="M:Controllers.DemoProductController.Get">
             <summary>
             Get All Demo Products
