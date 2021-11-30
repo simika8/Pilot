@@ -13,6 +13,9 @@ public static class ODataEdmModel
         builder.EntitySet<Models.DemoProductExt>(nameof(Models.DemoProductExt));
         builder.EntitySet<Models.DemoInventoryStock>(nameof(Models.DemoInventoryStock));
 
+        builder.EntitySet<Models.VmDemoProductDemoInventoryStock>(nameof(Models.VmDemoProductDemoInventoryStock));
+        
+
         return builder.GetEdmModel();
 
     }

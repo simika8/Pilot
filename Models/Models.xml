@@ -78,5 +78,17 @@
         <member name="F:Models.DemoProductType.Information">
             <summary>Information</summary>
         </member>
+        <member name="T:Models.VmDemoProductDemoInventoryStock">
+            <summary>Product + Stock data</summary>
+        </member>
+        <member name="P:Models.VmDemoProductDemoInventoryStock.Id">
+            <summary> Id </summary>
+        </member>
+        <member name="P:Models.VmDemoProductDemoInventoryStock.DemoProduct">
+            <summary> Product </summary>
+        </member>
+        <member name="P:Models.VmDemoProductDemoInventoryStock.DemoInventoryStock">
+            <summary> Stock in a specified Store  </summary>
+        </member>
     </members>
 </doc>

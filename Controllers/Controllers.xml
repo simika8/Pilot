@@ -38,5 +38,18 @@
         <member name="M:Controllers.ODataEdmModel.GetEdmModel">
             <summary>Edm Model Builder function</summary>
         </member>
+        <member name="T:Controllers.VmDemoProductDemoInventoryStockController">
+            <summary>
+            Demo Product Controller
+            </summary>
+        </member>
+        <member name="M:Controllers.VmDemoProductDemoInventoryStockController.#ctor(Bl.NexxtPilotContext)">
+            <summary> </summary>
+        </member>
+        <member name="M:Controllers.VmDemoProductDemoInventoryStockController.Get(System.Guid)">
+            <summary>
+            Get All Demo Products
+            </summary>
+        </member>
     </members>
 </doc>

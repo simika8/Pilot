@@ -9,6 +9,7 @@ public class NexxtPilotContext : DbContext
     private string ConnectionString { get; set; }
 
     public DbSet<Models.DemoProduct> DemoProducts { get; set; } = null!;
+    public DbSet<Models.DemoInventoryStock> DemoInventoryStocks { get; set; } = null!;
 
 
     public NexxtPilotContext()
