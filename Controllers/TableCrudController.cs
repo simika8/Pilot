@@ -2,55 +2,50 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
-using Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Controllers;
 /// <summary>
-/// Demo Product Controller
+/// Table CRUD Controller
 /// </summary>
-[Route("[controller]")]
-public class DemoProductController : ODataController
+public abstract class TableCrudController<T> : ODataController where T : class
 {
-    private NexxtPilotContext Db { get; set; }
-    /// <summary> </summary>
-    public DemoProductController(NexxtPilotContext db)
-    {
-        Db = db;
-    }
+    /// <summary>Database Context</summary>
+    protected NexxtPilotContext Db { get; set; } = null!;
 
     /// <summary>
-    /// Get All Demo Products
+    /// Get All data
     /// </summary>
     [HttpGet]
     [EnableQuery]
-    public IQueryable<Models.DemoProduct> Get()
+    public IQueryable<T> Get()
     {
-        return Db.Set<DemoProduct>().AsQueryable();
+        return Db.Set<T>().AsQueryable();
     }
 
     /// <summary>Create data</summary>
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] DemoProduct entity)
+    public async Task<IActionResult> Post([FromBody] T entity)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        Db.Set<DemoProduct>().Add(entity);
+        Db.Set<T>().Add(entity);
         await Db.SaveChangesAsync();
         return Created(entity);
     }
 
     /// <summary>Updates data</summary>
     [HttpPut]
-    public async Task<IActionResult> Put(Guid key, [FromBody] Microsoft.AspNetCore.OData.Deltas.Delta<DemoProduct> delta)
+    public async Task<IActionResult> Put(Guid key, [FromBody] Microsoft.AspNetCore.OData.Deltas.Delta<T> delta)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
-        var entity = await Db.FindAsync<DemoProduct>(key);
+        var entity = await Db.FindAsync<T>(key);
         if (entity == null)
         {
             return NotFound();
@@ -71,7 +66,7 @@ public class DemoProductController : ODataController
 
     /// <summary>Updates data. Only specified fields</summary>
     [HttpPatch]
-    public async Task<IActionResult> Patch([Microsoft.AspNetCore.OData.Formatter.FromODataUri] Guid key, Microsoft.AspNetCore.OData.Deltas.Delta<DemoProduct> delta)
+    public async Task<IActionResult> Patch([Microsoft.AspNetCore.OData.Formatter.FromODataUri] Guid key, Microsoft.AspNetCore.OData.Deltas.Delta<T> delta)
     {
 
 
@@ -80,7 +75,7 @@ public class DemoProductController : ODataController
             return BadRequest(ModelState);
         }
 
-        var entity = await Db.FindAsync<DemoProduct>(key);
+        var entity = await Db.FindAsync<T>(key);
         if (entity == null)
         {
             return NotFound();
@@ -105,7 +100,7 @@ public class DemoProductController : ODataController
     [HttpDelete]
     public async Task<IActionResult> Delete(Guid key)
     {
-        var entity = await Db.FindAsync<DemoProduct>(key);
+        var entity = await Db.FindAsync<T>(key);
         if (entity == null)
         {
             return NotFound();

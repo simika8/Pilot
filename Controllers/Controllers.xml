@@ -4,31 +4,6 @@
         <name>Controllers</name>
     </assembly>
     <members>
-        <member name="T:Controllers.DemoProductController">
-            <summary>
-            Demo Product Controller
-            </summary>
-        </member>
-        <member name="M:Controllers.DemoProductController.#ctor(Bl.NexxtPilotContext)">
-            <summary> </summary>
-        </member>
-        <member name="M:Controllers.DemoProductController.Get">
-            <summary>
-            Get All Demo Products
-            </summary>
-        </member>
-        <member name="M:Controllers.DemoProductController.Post(Models.DemoProduct)">
-            <summary>Create data</summary>
-        </member>
-        <member name="M:Controllers.DemoProductController.Put(System.Guid,Microsoft.AspNetCore.OData.Deltas.Delta{Models.DemoProduct})">
-            <summary>Updates data</summary>
-        </member>
-        <member name="M:Controllers.DemoProductController.Patch(System.Guid,Microsoft.AspNetCore.OData.Deltas.Delta{Models.DemoProduct})">
-            <summary>Updates data. Only specified fields</summary>
-        </member>
-        <member name="M:Controllers.DemoProductController.Delete(System.Guid)">
-            <summary>Deletes Data</summary>
-        </member>
         <member name="T:Controllers.NexxtPilotAdminController">
             <summary> Baseic database commands for develompent</summary>
         </member>
@@ -49,6 +24,55 @@
         </member>
         <member name="M:Controllers.ODataEdmModel.GetEdmModel">
             <summary>Edm Model Builder function</summary>
+        </member>
+        <member name="T:Controllers.TableCrudController`1">
+            <summary>
+            Table CRUD Controller
+            </summary>
+        </member>
+        <member name="P:Controllers.TableCrudController`1.Db">
+            <summary>Database Context</summary>
+        </member>
+        <member name="M:Controllers.TableCrudController`1.Get">
+            <summary>
+            Get All data
+            </summary>
+        </member>
+        <member name="M:Controllers.TableCrudController`1.Post(`0)">
+            <summary>Create data</summary>
+        </member>
+        <member name="M:Controllers.TableCrudController`1.Put(System.Guid,Microsoft.AspNetCore.OData.Deltas.Delta{`0})">
+            <summary>Updates data</summary>
+        </member>
+        <member name="M:Controllers.TableCrudController`1.Patch(System.Guid,Microsoft.AspNetCore.OData.Deltas.Delta{`0})">
+            <summary>Updates data. Only specified fields</summary>
+        </member>
+        <member name="M:Controllers.TableCrudController`1.Delete(System.Guid)">
+            <summary>Deletes Data</summary>
+        </member>
+        <member name="T:Controllers.TableCruds.DemoInventoryStockController">
+            <summary>
+            Demo Product Controller
+            </summary>
+        </member>
+        <member name="M:Controllers.TableCruds.DemoInventoryStockController.#ctor(Bl.NexxtPilotContext)">
+            <summary> </summary>
+        </member>
+        <member name="T:Controllers.TableCruds.DemoProductController">
+            <summary>
+            Demo Product Controller
+            </summary>
+        </member>
+        <member name="M:Controllers.TableCruds.DemoProductController.#ctor(Bl.NexxtPilotContext)">
+            <summary> </summary>
+        </member>
+        <member name="T:Controllers.TableCruds.DemoProductExtController">
+            <summary>
+            Demo Product Controller
+            </summary>
+        </member>
+        <member name="M:Controllers.TableCruds.DemoProductExtController.#ctor(Bl.NexxtPilotContext)">
+            <summary> </summary>
         </member>
         <member name="T:Controllers.VmDemoProductDemoInventoryStockController">
             <summary>
