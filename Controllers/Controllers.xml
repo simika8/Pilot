@@ -17,6 +17,18 @@
             Get All Demo Products
             </summary>
         </member>
+        <member name="M:Controllers.DemoProductController.Post(Models.DemoProduct)">
+            <summary>Create data</summary>
+        </member>
+        <member name="M:Controllers.DemoProductController.Put(System.Guid,Microsoft.AspNetCore.OData.Deltas.Delta{Models.DemoProduct})">
+            <summary>Updates data</summary>
+        </member>
+        <member name="M:Controllers.DemoProductController.Patch(System.Guid,Microsoft.AspNetCore.OData.Deltas.Delta{Models.DemoProduct})">
+            <summary>Updates data. Only specified fields</summary>
+        </member>
+        <member name="M:Controllers.DemoProductController.Delete(System.Guid)">
+            <summary>Deletes Data</summary>
+        </member>
         <member name="T:Controllers.NexxtPilotAdminController">
             <summary> Baseic database commands for develompent</summary>
         </member>

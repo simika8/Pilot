@@ -71,7 +71,7 @@ public static class RandomProduct
             Price = rnd.Next(5000) + 100 + ((productNumber % 10) == 2 ? 0 : 0.1),
             Rating = rnd.Next(1, 5),
 
-            ReleaseDate = DateTime.SpecifyKind(new DateTime(2000, 01, 01), DateTimeKind.Utc).AddMilliseconds(productNumber * 30).AddHours(productNumber),
+            ReleaseDate = new DateTime(2000, 01, 01).AddMilliseconds(productNumber * 30).AddHours(productNumber),
             Type = productNumber % 10 == 3 ? DemoProductType.Service : DemoProductType.Product,
         };
         if (IsPrime(productNumber) && p.Type == DemoProductType.Product)

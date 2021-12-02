@@ -44,5 +44,15 @@ public class NexxtPilotContext : DbContext
     {
         //This is for sub tables (refenenced only from model not from Dbcontext) be plural (eg: ProductExt -> ProductExts)
         modelBuilder.PluralizingTableNameConvention();
+
+		//Without this: 
+		//Cannot write DateTime with Kind=Unspecified to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array/range. See the Npgsql.EnableLegacyTimestampBehavior AppContext switch to enable legacy behavior. at Npgsql.Internal.TypeHandlers.DateTimeHandlers.TimestampTzHandler.ValidateAndGetLength(DateTime value, NpgsqlParameter parameter)
+        foreach (var property in modelBuilder.Model.GetEntityTypes()
+                 .SelectMany(t => t.GetProperties())
+                 .Where(p => p.ClrType == typeof(DateTime) || p.ClrType == typeof(DateTime?)))
+        {
+            property.SetColumnType("timestamp without time zone");
+        }
+            
     }
 }
