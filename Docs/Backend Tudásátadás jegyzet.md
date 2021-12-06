@@ -1,8 +1,34 @@
 # UserStories
 
-## 001 NexxtCore Container létrehozása
-### #1 Architektúra terv átnézése
+## 000 Bevezetés
+### Architekrúra C4 terv:
 https://wiki.adg.hu/pages/viewpage.action?pageId=32604288
+
+- Backend frontend szétválás
+    - Odata (lekérdezés: frontend oldali szűrés, rendezés, mezőlekérdezés; CRUD műveletek)
+    - Rest (külsősöknek publikált Api végpontok, backlend oldalon lefuttatandó parancsok)
+    - SignalR: frontend frissítés
+    - (Opcionális) Általános backend oldali kereső: Frontend oldalról csak lassan megvalósítható keresések támogatására.
+    - Backend oldali join.
+
+
+- out of scope:
+    - Unit tesztek
+    - Frontend frissítés SignalR segítségével
+    - NexxtCore - NexxtComm 2 irányú RPC rendszer SignalR protokolra építve.
+    - Authentikáció authorizáció, authentikáció (jwt, Oauth, OpenId, KeyCloak, react: oidc client)
+    - időzített háttérfolyamatok (saját megvalósítás / kész komponens )
+    - Összetett folyamatok kezelése (lassú, több szervizt érintő folyamatok, mint pl nyugta nyomtatás, Virep ellenőrzés, Dispenser kitárazás, Dobozazonosítás stb).
+    - git flow
+    - on premise deployment
+    - repository layer (???)
+    - performance tesztelés
+
+- repository használat: 
+    - Szoftver rendszerenként egy (pl NexxtCore + NexxtSpa egy repoban lesz, Statements külön Repoban. Pilot külön Branchen).
+ 
+
+## 001 NexxtCore Container létrehozása
 
 ### #2 Git clone
 ```
@@ -71,14 +97,14 @@ if (app.Environment.IsDevelopment())
 ### #10 Modellek létrehozása
 - Modellek kétrehozása (models1 minta fájlok másolása)
 - Elnevezési konvenciók
-    - Angol név. szótár: https://docs.google.com/spreadsheets/d/176d3njFe7a4SQwJaHJAKYb6gOkyeUlWRQBXABLP23Ec/edit#gid=0
+    - Angol név. szótár: https://docs.google.com/spreadsheets/d/176d3njFe7a4SQwJaHJAKYb6gOkyeUlWRQBXABLP23Ec/edit?usp=sharing
     - Nincsenek rövidítések, minden szót teljesen kiírunk
     - Betűszavak létrehozása: pl "TTT kód" -> TttCode; Universal Cash Register Framework -> Ucrf.
     - Demo kezdetű nevek. 
     - egyes szám: Modell class, controller-eknél; 
-    - többes szám: entity dbset
+    - többes szám: entity dbset (???)
 - Enumok használata (konstans értékekkel)
-- Hossz korlátozás mellőzése, ahol nem 100% hogy nem fog változni a hossz
+- Szöveges mezőknél hossz korlátozás mellőzése, ahol nem 100% hogy nem fog változni a hossz
 - Rekurzív navigation property-k kerülése
 - Id elnevezések
 - git commit
@@ -340,3 +366,11 @@ postnál ledöglik:
 - Postman teszt: ```https://localhost:44339/odata/DemoProductExt?$top=10```
 - Postman teszt: ```https://localhost:44339/odata/DemoInventoryStock?$top=10```
 - Azure publish, git Commit
+
+### #26 Pilot Projekt leválasztása az éles Nexxt Projektről
+- Git Create Branch
+
+
+
+------------------------
+
